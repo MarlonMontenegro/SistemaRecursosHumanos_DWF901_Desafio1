@@ -2,6 +2,12 @@ CREATE DATABASE IF NOT EXISTS hr_donbosco;
 
 USE hr_donbosco;
 
+-- DROP TABLE IF EXISTS Contrataciones;
+-- DROP TABLE IF EXISTS TipoContratacion;
+-- DROP TABLE IF EXISTS Cargo;
+-- DROP TABLE IF EXISTS Departamento;
+-- DROP TABLE IF EXISTS Empleados;
+
 CREATE TABLE Empleados (
     idEmpleado INT AUTO_INCREMENT PRIMARY KEY,
     numeroDui VARCHAR(9) NOT NULL UNIQUE, 
@@ -35,16 +41,15 @@ CREATE TABLE Contrataciones (
     idDepartamento INT NOT NULL,
     idEmpleado INT NOT NULL,
     idCargo INT NOT NULL,
+    idTipoContratacion INT NOT NULL,
     fechaContratacion DATE NOT NULL,
     salario DECIMAL(10,2) NOT NULL,
     estado BOOLEAN NOT NULL DEFAULT 1,
     FOREIGN KEY (idDepartamento) REFERENCES Departamento(idDepartamento),
     FOREIGN KEY (idEmpleado) REFERENCES Empleados(idEmpleado),
-    FOREIGN KEY (idCargo) REFERENCES Cargo(idCargo)
+    FOREIGN KEY (idCargo) REFERENCES Cargo(idCargo),
+    FOREIGN KEY (idTipoContratacion) REFERENCES TipoContratacion(idTipoContratacion)
 );
-
-
-
 
 -- Insertar departamentos
 INSERT INTO Departamento (nombreDepartamento, descripcionDepartamento) VALUES
@@ -70,18 +75,19 @@ INSERT INTO Empleados (numeroDui, nombrePersona, usuario, numeroTelefono, correo
 ('098765432', 'Ana Martínez', 'amartinez', '77779876', 'amartinez@donbosco.edu.sv', '1990-11-22'),
 ('123456789', 'José Ramírez', 'jramirez', '77770011', 'jramirez@donbosco.edu.sv', '1995-03-10');
 
--- Insertar contrataciones
-INSERT INTO Contrataciones (idDepartamento, idEmpleado, idCargo, fechaContratacion, salario, estado) VALUES
-(1, 1, 1, '2020-01-10', 500.00, 1),
-(2, 2, 2, '2018-06-01', 1200.00, 1),
-(3, 3, 3, '2021-09-15', 450.00, 1);
+-- Insertar contrataciones (ejemplo: tipo 1=Temporal, 2=Permanente, 3=Por Proyecto)
+INSERT INTO Contrataciones (idDepartamento, idEmpleado, idCargo, idTipoContratacion, fechaContratacion, salario, estado) VALUES
+(1, 1, 1, 2, '2020-01-10', 500.00, 1),
+(2, 2, 2, 1, '2018-06-01', 1200.00, 1),
+(3, 3, 3, 3, '2021-09-15', 450.00, 1);
 
-
+-- Consulta
 SELECT 
     e.idEmpleado,
     e.nombrePersona,
     d.nombreDepartamento,
     ca.cargo,
+    t.tipoContratacion,
     c.salario,
     c.fechaContratacion,
     CASE 
@@ -95,4 +101,7 @@ JOIN
 JOIN 
     Departamento d ON c.idDepartamento = d.idDepartamento
 JOIN 
-    Cargo ca ON c.idCargo = ca.idCargo;
+    Cargo ca ON c.idCargo = ca.idCargo
+JOIN 
+    TipoContratacion t ON c.idTipoContratacion = t.idTipoContratacion;
+
