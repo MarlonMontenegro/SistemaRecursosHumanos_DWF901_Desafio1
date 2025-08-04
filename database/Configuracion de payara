@@ -1,0 +1,3 @@
+Configurar Payara:
+    Crear JDBC Connection Pool con el  nombre  "hrDonBoscoPool"
+    Crear JDBC Resource llamado "jdbc/hrDonBosco"
