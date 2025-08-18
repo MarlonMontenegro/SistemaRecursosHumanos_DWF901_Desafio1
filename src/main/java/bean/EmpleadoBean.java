@@ -1,8 +1,8 @@
-package model;
+package bean;
 
 import java.util.Date;
 
-public class Empleado {
+public class EmpleadoBean {
 
     private int idEmpleado;
     private String numeroDui;
@@ -12,11 +12,11 @@ public class Empleado {
     private String correoInstitucional;
     private Date fechaNacimiento;
 
-    public Empleado() {
+    public EmpleadoBean() {
     }
 
 
-    public Empleado(String numeroDui, String nombrePersona, String usuario, String numeroTelefono, String correoInstitucional, Date fechaNacimiento) {
+    public EmpleadoBean(String numeroDui, String nombrePersona, String usuario, String numeroTelefono, String correoInstitucional, Date fechaNacimiento) {
         this.numeroDui = numeroDui;
         this.nombrePersona = nombrePersona;
         this.usuario = usuario;
@@ -25,7 +25,7 @@ public class Empleado {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Empleado(int idEmpleado, String numeroDui, String nombrePersona, String usuario, String numeroTelefono, String correoInstitucional, Date fechaNacimiento) {
+    public EmpleadoBean(int idEmpleado, String numeroDui, String nombrePersona, String usuario, String numeroTelefono, String correoInstitucional, Date fechaNacimiento) {
         this.idEmpleado = idEmpleado;
         this.numeroDui = numeroDui;
         this.nombrePersona = nombrePersona;
