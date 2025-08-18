@@ -1,6 +1,6 @@
-package model;
+package bean;
 
-public class Cargo {
+public class CargoBean {
 
 
     private int idCargo;
@@ -9,17 +9,17 @@ public class Cargo {
     private boolean jefatura;
 
 
-    public Cargo() {
+    public CargoBean() {
     }
 
-    public Cargo(int idCargo, String cargo, String descripcionCargo, boolean jefatura) {
+    public CargoBean(int idCargo, String cargo, String descripcionCargo, boolean jefatura) {
         this.idCargo = idCargo;
         this.cargo = cargo;
         this.descripcionCargo = descripcionCargo;
         this.jefatura = jefatura;
     }
 
-    public Cargo(String cargo, String descripcionCargo, boolean jefatura) {
+    public CargoBean(String cargo, String descripcionCargo, boolean jefatura) {
         this.cargo = cargo;
         this.descripcionCargo = descripcionCargo;
         this.jefatura = jefatura;

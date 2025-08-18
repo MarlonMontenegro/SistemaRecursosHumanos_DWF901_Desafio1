@@ -1,21 +1,21 @@
-package model;
+package bean;
 
-public class Departamento {
+public class DepartamentoBean {
     private int idDepartamento;
     private String nombreDepartamento;
     private String descripcionDepartamento;
 
 
-    public Departamento() {
+    public DepartamentoBean() {
     }
 
-    public Departamento(int idDepartamento, String nombreDepartamento, String descripcionDepartamento) {
+    public DepartamentoBean(int idDepartamento, String nombreDepartamento, String descripcionDepartamento) {
         this.idDepartamento = idDepartamento;
         this.nombreDepartamento = nombreDepartamento;
         this.descripcionDepartamento = descripcionDepartamento;
     }
 
-    public Departamento(String nombreDepartamento, String descripcionDepartamento) {
+    public DepartamentoBean(String nombreDepartamento, String descripcionDepartamento) {
         this.nombreDepartamento = nombreDepartamento;
         this.descripcionDepartamento = descripcionDepartamento;
     }

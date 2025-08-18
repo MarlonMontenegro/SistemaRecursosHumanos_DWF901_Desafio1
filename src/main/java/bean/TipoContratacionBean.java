@@ -1,24 +1,24 @@
-package model;
+package bean;
 
-public class TipoContratacion {
+public class TipoContratacionBean {
 
     private int idTipoContratacion;
     private String tipoContratacion;
 
 
-    public TipoContratacion(int idTipoContratacion, String tipoContratacion) {
+    public TipoContratacionBean(int idTipoContratacion, String tipoContratacion) {
         this.idTipoContratacion = idTipoContratacion;
         this.tipoContratacion = tipoContratacion;
     }
 
-    public TipoContratacion() {
+    public TipoContratacionBean() {
     }
 
     public void setIdTipoContratacion(int idTipoContratacion) {
         this.idTipoContratacion = idTipoContratacion;
     }
 
-    public TipoContratacion(String tipoContratacion) {
+    public TipoContratacionBean(String tipoContratacion) {
         this.tipoContratacion = tipoContratacion;
     }
 
