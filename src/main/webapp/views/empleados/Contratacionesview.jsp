@@ -1,91 +1,36 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nueva Contratación</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nueva Contratación | Sistema de Recursos Humanos</title>
+
+    <!-- Bootstrap 5 (igual línea base que usas) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
     <style>
-        body {
-            background: #f5f7fa;
-            font-family: Arial, sans-serif;
-        }
-        .card-form {
-            border: none;
-            border-radius: .75rem;
-            box-shadow: 0 15px 30px -10px rgba(31,111,235,0.15);
-            background: #fff;
-            padding: 2rem;
-        }
-        .btn-action {
-            border-radius: .5rem;
-            font-weight: 600;
-            padding: .9rem 1.25rem;
-            box-shadow: 0 8px 20px rgba(31,111,235,.2);
-        }
         :root{
-            --primary:#0d6efd;
-            --success:#198754;
-            --warning:#ffc107;
-            --info:#0dcaf0;
-            --muted:#f8f9fa;
-            --card:#ffffff;
+            --primary:#0d6efd; --success:#198754; --warning:#ffc107; --info:#0dcaf0;
+            --muted:#f8f9fa; --card:#ffffff;
         }
-        body{ background: var(--muted); }
-
+        body{ background: var(--muted); font-family: Arial, sans-serif; }
         .brand-bar{ box-shadow: 0 2px 10px rgba(0,0,0,.05); }
-
-        .page-title{
-            font-weight: 800;
-            letter-spacing: .2px;
-        }
-
-        .stat-chip{
-            background: #f1f6ff;
-            color: var(--primary);
-            font-weight: 600;
-            border-radius: 999px;
-            padding: .35rem .75rem;
-            font-size: .85rem;
-        }
-        .card-soft{
-            background: var(--card);
-            border: 1px solid #eef2f7;
-            border-radius: 1rem;
-            box-shadow: 0 10px 20px rgba(13,110,253,.05);
-            transition: transform .15s ease, box-shadow .15s ease;
-        }
-        .card-soft:hover{ transform: translateY(-2px); box-shadow: 0 14px 26px rgba(13,110,253,.09); }
-
-        .btn-primary{ background: var(--primary); border-color: var(--primary); }
+        .card-form{ border: none; border-radius: .75rem; background:#fff; padding:2rem;
+            box-shadow: 0 15px 30px -10px rgba(31,111,235,.15); }
+        .btn-action{ border-radius:.5rem; font-weight:600; padding:.9rem 1.25rem;
+            box-shadow:0 8px 20px rgba(31,111,235,.2); }
         .btn-success{ background: var(--success); border-color: var(--success); }
-
-        .dept-icon{
-            width: 46px; height: 46px;
-            display:flex; align-items:center; justify-content:center;
-            border-radius: 12px;
-        }
-        .dept-icon.primary { background:#e9f1ff; color: var(--primary); }
-        .dept-icon.success { background:#eaf7f1; color: var(--success); }
-        .dept-icon.warning { background:#fff6df; color:#d39e00; }
-        .dept-icon.info    { background:#e8fbff; color:#0aa2c0; }
-
-        .search-wrap{
-            background: #fff;
-            border:1px solid #eef2f7; border-radius: .75rem;
-            padding:.5rem .75rem;
-        }
     </style>
 </head>
 
+<!-- Header/brand bar consistente con tus vistas -->
 <header class="bg-white brand-bar">
     <div class="container py-3 d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-3">
             <i class="bi bi-microsoft text-primary fs-3"></i>
-            <div class="">
+            <div>
                 <div class="fw-bold">Universidad Aguacate</div>
                 <small class="text-secondary">Sistema de Recursos Humanos</small>
             </div>
@@ -108,34 +53,29 @@
     </div>
 
     <div class="card card-form">
+        <!-- Igual que tu ejemplo: POST a un Servlet -->
         <form action="${pageContext.request.contextPath}/ContratacionesServlet" method="post">
-
             <div class="row g-3">
-                <!-- idContratacion -->
                 <div class="col-md-4">
                     <label class="form-label fw-semibold">ID de Contratación</label>
                     <input type="text" name="idContratacion" class="form-control" placeholder="CTR-0001" required>
                 </div>
 
-                <!-- empleado -->
                 <div class="col-md-8">
                     <label class="form-label fw-semibold">Empleado</label>
                     <input type="text" name="empleado" class="form-control" placeholder="ID o nombre del empleado" required>
                 </div>
 
-                <!-- Departamento (tal cual nombre del campo solicitado) -->
                 <div class="col-md-6">
                     <label class="form-label fw-semibold">Departamento</label>
                     <input type="text" name="Departamento" class="form-control" placeholder="Finanzas, TI, RRHH" required>
                 </div>
 
-                <!-- cargo -->
                 <div class="col-md-6">
                     <label class="form-label fw-semibold">Cargo</label>
                     <input type="text" name="cargo" class="form-control" placeholder="Analista, Desarrollador, etc." required>
                 </div>
 
-                <!-- tipoContratacion -->
                 <div class="col-md-6">
                     <label class="form-label fw-semibold">Tipo de Contratación</label>
                     <select name="tipoContratacion" class="form-select" required>
@@ -148,13 +88,11 @@
                     </select>
                 </div>
 
-                <!-- fechaContratacion -->
                 <div class="col-md-3">
                     <label class="form-label fw-semibold">Fecha de Contratación</label>
                     <input type="date" name="fechaContratacion" class="form-control" required>
                 </div>
 
-                <!-- salario -->
                 <div class="col-md-3">
                     <label class="form-label fw-semibold">Salario</label>
                     <div class="input-group">
@@ -173,11 +111,10 @@
                     <i class="bi bi-check-circle me-2"></i> Guardar Contratación
                 </button>
             </div>
-
         </form>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
