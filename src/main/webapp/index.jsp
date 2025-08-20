@@ -75,20 +75,19 @@
         <div class="card card-action p-4 mb-4">
             <h5 class="mb-3 text-center">Acciones Rapidas</h5>
             <div class="d-flex flex-column gap-3">
-                <a href="#" class="btn btn-primary btn-action w-100 d-flex align-items-center justify-content-center">
-                    <i class="bi bi-person-plus-fill me-2"></i> Empleados
-                </a>
-                <a href="#" class="btn btn-secondary btn-action w-100 d-flex align-items-center justify-content-center">
+                <a href="${pageContext.request.contextPath}/empleados"
+                   class="btn btn-secondary btn-action w-100 d-flex align-items-center justify-content-center">
                     <i class="bi bi-eye-fill me-2"></i> Ver Empleados
                 </a>
                 <a href="${pageContext.request.contextPath}/departamentos"
                    class="btn btn-success btn-action w-100 d-flex align-items-center justify-content-center">
                     <i class="bi bi-building me-2"></i> Departamentos
                 </a>
-                <a href="${pageContext.request.contextPath}/views/contrataciones/Contratacionesview.jsp"
+                <a href="${pageContext.request.contextPath}/contrataciones"
                    class="btn btn-warning btn-action w-100 d-flex align-items-center justify-content-center">
                     <i class="bi bi-briefcase-fill me-2"></i> Contrataciones
                 </a>
+
                 <a href="${pageContext.request.contextPath}/cargos"
                    class="btn btn-info btn-action w-100 d-flex align-items-center justify-content-center">
                     <i class="bi bi-card-checklist me-2"></i> Cargos

@@ -1,41 +1,66 @@
 package controller;
 
+import bean.ContratacionesBean;
+import model.ContratacionModel;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/ContratacionesServlet")
+@WebServlet("/contrataciones")
 public class ContratacionesServlet extends HttpServlet {
 
-    private static final String JSP_VIEW = "/views/contrataciones/Contratacionesview.jsp";
+    private ContratacionModel contratacionModel = new ContratacionModel();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher(JSP_VIEW).forward(request, response);
+
+        String accion = request.getParameter("accion");
+        if (accion == null) accion = "listar";
+
+        switch (accion) {
+            case "cambiarEstado": {
+                int id = Integer.parseInt(request.getParameter("id"));
+                boolean nuevoEstado = Boolean.parseBoolean(request.getParameter("estado")); // "true"/"false"
+                contratacionModel.cambiarEstado(id, nuevoEstado);
+                response.sendRedirect(request.getContextPath() + "/contrataciones?accion=listar");
+                return;
+            }
+            case "nuevo": {
+                // Solo mostrar formulario (placeholder si aún no existe)
+                request.getRequestDispatcher("/views/contrataciones/FormContratacion.jsp")
+                        .forward(request, response);
+                return;
+            }
+            case "editar": {
+                int id = Integer.parseInt(request.getParameter("id"));
+                // ContratacionesBean c = contratacionModel.obtenerPorId(id); // si ya lo tienes
+                // request.setAttribute("contratacion", c);
+                request.getRequestDispatcher("/views/contrataciones/FormContratacion.jsp")
+                        .forward(request, response);
+                return;
+            }
+            case "listar":
+            default:
+                listarAmbas(request, response);
+        }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
-        request.setCharacterEncoding("UTF-8");
+    private void listarAmbas(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-        // Lee parámetros del formulario 
-        String idContratacion   = request.getParameter("idContratacion");
-        String empleado         = request.getParameter("empleado");
-        String departamento     = request.getParameter("Departamento"); 
-        String cargo            = request.getParameter("cargo");
-        String tipoContratacion = request.getParameter("tipoContratacion");
-        String fecha            = request.getParameter("fechaContratacion");
-        String salario          = request.getParameter("salario");
+        List<ContratacionesBean> activas    = contratacionModel.listaContratacionesActivas();
+        List<ContratacionesBean> inactivas  = contratacionModel.listaContratacionesInactivas();
 
-        System.out.printf("[ContratacionesServlet] id=%s, emp=%s, dept=%s, cargo=%s, tipo=%s, fecha=%s, salario=%s%n",
-                idContratacion, empleado, departamento, cargo, tipoContratacion, fecha, salario);
-
-       
-        response.sendRedirect(request.getContextPath() + "/ContratacionesServlet");
+        request.setAttribute("contratacionesActivas", activas);
+        request.setAttribute("contratacionesInactivas", inactivas);
+        request.getRequestDispatcher("/views/contrataciones/ListarContrataciones.jsp")
+                .forward(request, response);
     }
 }
+
