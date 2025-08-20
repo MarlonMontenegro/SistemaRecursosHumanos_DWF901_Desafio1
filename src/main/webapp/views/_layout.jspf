@@ -39,4 +39,59 @@
 <body>
 <!-- 
     Cuerpo principal del documento HTML.
-    Aquí s
+    Aquí se organiza el contenido en secciones: header, main y footer.
+-->
+
+<!-- HEADER -->
+<header>
+    <!-- 
+        Encabezado de la página que contiene el título principal y la barra de navegación.
+    -->
+    <h1>Gestión de Recursos Humanos</h1>
+    <!-- 
+        Encabezado H1: título principal de la aplicación.
+    -->
+
+    <nav>
+        <!-- 
+            Sección de navegación que contiene un menú con enlaces a las diferentes áreas del sistema.
+        -->
+        <ul>
+            <li><a href="EmpleadoServlet?action=listar">Empleados</a></li>
+            <!-- Enlace que redirige al servlet para listar empleados. -->
+
+            <li><a href="#">Departamentos</a></li>
+            <!-- Enlace placeholder para gestionar departamentos. -->
+
+            <li><a href="#">Cargos</a></li>
+            <!-- Enlace placeholder para gestionar cargos dentro de la empresa. -->
+
+            <li><a href="#">Contrataciones</a></li>
+            <!-- Enlace placeholder para gestionar procesos de contratación. -->
+        </ul>
+    </nav>
+</header>
+
+<!-- CONTENIDO -->
+<main>
+    <!-- 
+        Sección principal de la página que carga dinámicamente el contenido.
+        Uso de <jsp:include>:
+        - page="${pageContent}": el contenido que se mostrará depende de la variable "pageContent",
+          definida en el servlet antes de redirigir a este JSP.
+        Esto permite reutilizar esta plantilla como layout base para diferentes vistas.
+    -->
+    <jsp:include page="${pageContent}" />
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <!-- 
+        Pie de página que muestra información adicional o de derechos reservados.
+        En este caso, se especifica que se trata de un proyecto universitario.
+    -->
+    <p>© 2025 HR Don Bosco - Proyecto Universitario</p>
+</footer>
+
+</body>
+</html>
