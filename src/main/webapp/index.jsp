@@ -4,36 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Control - Recursos Humanos</title>
+    <!-- Bootstrap para estilos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind para estilos extra -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Iconos de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
     <style>
+        /* Fondo gris claro y tipografía básica */
         body {
             background: #f5f7fa;
             font-family: Arial, sans-serif;
         }
+        /* Estilos de las tarjetas (metricas, anuncios, etc.) */
         .card-metric, .card-recent, .card-announcement, .card-extra {
             border: none;
             border-radius: .75rem;
             box-shadow: 0 15px 30px -10px rgba(31,111,235,0.15);
             background: #fff;
         }
+        /* Botones de acciones */
         .btn-action {
             border-radius: .5rem;
             font-weight: 600;
             padding: .9rem 1.25rem;
             box-shadow: 0 8px 20px rgba(31,111,235,.2);
         }
+        /* Valor grande en las métricas */
         .metric-value {
             font-size: 1.75rem;
             font-weight: bold;
         }
+        /* Texto pequeño en las métricas */
         .metric-label {
             font-size: .85rem;
             text-transform: uppercase;
             font-weight: 600;
             color: #555;
         }
+        /* Indicador de cambios (+ o -) */
         .delta {
             font-size: .75rem;
             color: #198754;
@@ -41,6 +51,7 @@
             align-items: center;
             gap: 4px;
         }
+        /* Círculo con iniciales de empleados */
         .avatar-circle {
             width: 38px;
             height: 38px;
@@ -52,6 +63,7 @@
             color: white;
             font-size: .85rem;
         }
+        /* Texto más pequeño y gris */
         .small-muted {
             font-size: .75rem;
             color: #6c757d;
@@ -61,11 +73,13 @@
 <body>
 <div class="container py-5">
 
+    <!-- ENCABEZADO -->
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4">
         <div>
             <h1 class="h3 fw-bold mb-1">Universidad Aguacate</h1>
             <div class="small text-secondary">Resumen general del sistema de HR</div>
         </div>
+        <!-- Usuario logueado -->
         <div class="mt-3 mt-md-0 d-flex gap-3 align-items-center">
             <div class="text-end">
                 <div class="small text-muted">Usuario:</div>
@@ -78,7 +92,9 @@
     </div>
 
 
+    <!-- TARJETAS DE MÉTRICAS (4 columnas) -->
     <div class="row g-3 mb-4">
+        <!-- Total empleados -->
         <div class="col-12 col-md-6 col-lg-3">
             <div class="card card-metric p-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -95,6 +111,7 @@
             </div>
         </div>
 
+        <!-- Departamentos -->
         <div class="col-12 col-md-6 col-lg-3">
             <div class="card card-metric p-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -111,6 +128,7 @@
             </div>
         </div>
 
+        <!-- Proyectos activos -->
         <div class="col-12 col-md-6 col-lg-3">
             <div class="card card-metric p-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -127,6 +145,7 @@
             </div>
         </div>
 
+        <!-- Vacantes abiertas -->
         <div class="col-12 col-md-6 col-lg-3">
             <div class="card card-metric p-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -144,8 +163,9 @@
         </div>
     </div>
 
+    <!-- SECCIÓN DE ACCIONES Y EMPLEADOS RECIENTES -->
     <div class="row g-4">
-        <!-- Acciones rapidas -->
+        <!-- Acciones rápidas -->
         <div class="col-12 col-lg-6">
             <div class="card p-4 card-metric">
                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -155,6 +175,7 @@
                     </div>
                     <i class="bi bi-speedometer2 fs-2 text-primary"></i>
                 </div>
+                <!-- Botones de acciones -->
                 <div class="d-flex flex-column gap-3">
                     <a href="#" class="btn btn-primary btn-action w-100 d-flex align-items-center justify-content-center">
                         <i class="bi bi-person-plus-fill me-2"></i> Empleados
@@ -176,6 +197,7 @@
             </div>
         </div>
 
+        <!-- Lista de empleados recientes -->
         <div class="col-12 col-lg-6">
             <div class="card p-3 card-recent">
                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -185,6 +207,7 @@
                     </div>
                     <i class="bi bi-clock-history fs-2 text-secondary"></i>
                 </div>
+                <!-- Lista con empleados -->
                 <ul class="list-group">
                     <li class="list-group-item d-flex align-items-center gap-3 border-0">
                         <div class="avatar-circle bg-primary">MA</div>
@@ -215,6 +238,7 @@
         </div>
     </div>
 
+    <!-- COMUNICADOS INTERNOS -->
     <div class="row mt-4">
         <div class="col-12">
             <div class="card p-4 card-announcement">
@@ -231,6 +255,7 @@
         </div>
     </div>
 
+    <!-- TABLA DE ESTADÍSTICAS DE ASISTENCIA -->
     <div class="row mt-4">
         <div class="col-12">
             <div class="card p-4 card-extra">
@@ -276,11 +301,13 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <div class="mt-5 text-center text-secondary small">
         UDB Virtual • Sistema de HR &middot; Diseno T1Falso.
     </div>
 </div>
+
+<!-- Scripts de Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
