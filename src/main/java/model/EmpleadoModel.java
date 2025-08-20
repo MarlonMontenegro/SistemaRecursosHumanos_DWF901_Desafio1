@@ -121,8 +121,26 @@ public class EmpleadoModel {
         }
     }
 
+    public int eliminarEmpleado(int id) {
+        String sql = "DELETE FROM empleados WHERE idEmpleado = ?";
+        try (Connection cn = DBConnection.getConnection();
+             PreparedStatement ps = cn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            return ps.executeUpdate();
+        } catch (SQLException ex) {
+            LOGGER.log(Level.SEVERE, "Error en eliminarEmpleado", ex);
+            return 0;
+        }
+    }
 
-
-
-
+    public int contarEmpleados() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM empleados";
+        try (Connection cn = DBConnection.getConnection();
+        ResultSet rs = cn.prepareStatement(sql).executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
 }
