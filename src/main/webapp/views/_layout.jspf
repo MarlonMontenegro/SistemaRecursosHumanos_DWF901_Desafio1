@@ -1,34 +1,42 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- 
+    Declaración de la librería de etiquetas JSTL (JavaServer Pages Standard Tag Library). 
+    - uri: ruta estándar para importar las etiquetas core de JSTL.
+    - prefix="c": define el prefijo que se usará para invocar las etiquetas de esta librería.
+-->
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!-- 
+    Directiva JSP que define:
+    - El tipo de contenido de la página (HTML con codificación UTF-8).
+    - El lenguaje de scripting utilizado (Java).
+-->
+
 <!DOCTYPE html>
 <html lang="es">
+<!-- 
+    Declaración del documento HTML5 con atributo de idioma en español (lang="es").
+    Esto ayuda a navegadores y motores de búsqueda a identificar el idioma de la página.
+-->
+
 <head>
     <meta charset="UTF-8">
+    <!-- 
+        Define la codificación de caracteres para la página (UTF-8),
+        garantizando compatibilidad con acentos y caracteres especiales del idioma español.
+    -->
+
     <title>HR Don Bosco</title>
+    <!-- Título que aparece en la pestaña del navegador -->
+
     <link rel="stylesheet" href="css/style.css">
+    <!-- 
+        Vinculación de una hoja de estilos externa (CSS) para dar formato visual a la página.
+        El archivo se encuentra en la carpeta "css" dentro del proyecto web.
+    -->
 </head>
+
 <body>
-<!-- HEADER -->
-<header>
-    <h1>Gestión de Recursos Humanos</h1>
-    <nav>
-        <ul>
-            <li><a href="EmpleadoServlet?action=listar">Empleados</a></li>
-            <li><a href="#">Departamentos</a></li>
-            <li><a href="#">Cargos</a></li>
-            <li><a href="#">Contrataciones</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- CONTENIDO -->
-<main>
-    <jsp:include page="${pageContent}" />
-</main>
-
-<!-- FOOTER -->
-<footer>
-    <p>© 2025 HR Don Bosco - Proyecto Universitario</p>
-</footer>
-</body>
-</html>
+<!-- 
+    Cuerpo principal del documento HTML.
+    Aquí s
